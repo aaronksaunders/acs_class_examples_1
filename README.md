@@ -1,6 +1,6 @@
 [![Appcelerator Titanium](http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png)](http://appcelerator.com/titanium/) [![Appcelerator Alloy](http://www-static.appcelerator.com/badges/alloy-git-badge-sq.png)](http://appcelerator.com/alloy/)
 
-Appcelerator Cloud Services Titanium Alloy Starter App Template
+Appcelerator Cloud Services Titanium Alloy Sample App
 ===
 _Concepts here are meant to be a introductory guide to concepts covered in my book on Appcelerator Alloy and Appcelerator Cloud Services_
 
@@ -10,7 +10,14 @@ _Concepts here are meant to be a introductory guide to concepts covered in my bo
 ===
 The purpose of this repo is to provide an application template as a starter to build native, cross-platform, cloud enabled application on the Appcelerator Platform.
 
-###Features
+###This application demonstrates the following Features
+* Creating Appcelerator Cloud Services Event Objects
+* Creating Appcelerator Cloud Services Custom Objects (Closet and Clothes)
+* Creating Appcelerator Cloud Services Custom Objects with Relationships ( Between Closet and Clothes )
+* Using the Appcelerator Titanium Alloy Custom Sync Adapter for Appcelerator Cloud Services
+* Extending the Appcelerator Titanium Alloy Model Objects ( Extends the Event Object with method to display formatted time )
+* Integration of a Titanium.UI.ListView
+* Appcelerator Titanium Alloy Model Data-Binding in a List View
 * Has a User Object with extended methods for logging in and getting account information. 
 * We have also extended the user to provide gelocation functionality
 
