@@ -1,7 +1,12 @@
 var args = arguments[0] || {};
 
+// If IOS then add the window to the NavigationWindow
+if (OS_IOS) {
+	$.navWindow.open();
+}
+
 function closeWindow() {
-	$.navWindow.close();
+	$.getView().close();
 }
 
 /**
@@ -43,14 +48,18 @@ function listItemClicked(_event) {
 	var controller = Alloy.createController("ListClothes", {
 		clothesArray : model.get("[CUSTOM_clothing]clothing_ids")
 	});
-	$.navWindow.openWindow(controller.clothesListWindow);
 
+	if (OS_IOS) {
+		$.navWindow.openWindow(controller.clothesListWindow);
+	} else {
+		controller.clothesListWindow.open();
+	}
 }
 
 /**
  * Event Listener called when the window is closed
  */
-$.navWindow.addEventListener("close", function() {
+$.getView().addEventListener("close", function() {
 	$.destroy();
 });
 

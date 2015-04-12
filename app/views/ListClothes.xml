@@ -1,11 +1,10 @@
 <Alloy>
-	<!-- on IOS we add the NavigationWindow to wrap UI,
-	this will place the tableView properly in the page -->
-
 	<Window class="container" id="clothesListWindow">
 		<RightNavButton platform="ios">
 			<Button onClick="closeWindow">Close</Button>
 		</RightNavButton>
+		<ActionBar displayHomeAsUp="true" platform="android"
+		onHomeIconItemSelected="closeWindow" />
 		<!-- listen for click and call the function specified -->
 		<ListView id="listView" onItemclick="listItemClicked"
 		defaultItemTemplate="listViewTemplate"

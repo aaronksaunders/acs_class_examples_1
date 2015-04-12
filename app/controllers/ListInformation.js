@@ -1,7 +1,12 @@
 var args = arguments[0] || {};
 
+// If IOS then add the window to the NavigationWindow
+if (OS_IOS) {
+	$.navWindow.add($.listInformationWindow);
+}
+
 function closeWindow() {
-	$.navWindow.close();
+	$.getView().close();
 }
 
 /**
@@ -45,7 +50,7 @@ function listItemClicked(_event) {
 /**
  * Event Listener called when the window is closed
  */
-$.navWindow.addEventListener("close", function() {
+$.getView().addEventListener("close", function() {
 	$.destroy();
 });
 

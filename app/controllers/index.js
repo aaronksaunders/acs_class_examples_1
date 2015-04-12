@@ -5,7 +5,6 @@ infoCollection = Alloy.Collections.instance('event');
 closetCollection = Alloy.Collections.instance('closet');
 clothesCollection = Alloy.Collections.instance('clothing');
 
-
 // check if there is a user session saved already
 var aUser = Alloy.createModel('User');
 if (aUser.authenticated()) {
@@ -38,7 +37,6 @@ function userLoggedIn(_user) {
 
 	// set button title with name to show we are logged in
 	$.logoutBtn.title = "Logout: " + _user.get("username");
-
 
 	// added support for getting location from the user
 	// object since it seems like a helpful feature
@@ -92,16 +90,22 @@ function doLogout() {
 //doShowEvents
 function doShowEvents() {
 	var controller = Alloy.createController("ListInformation");
-	controller.navWindow.open();
+	if (controller.navWindow) {
+		controller.navWindow.open();
+	} else {
+		controller.getView().open();
+	}
 }
-
 
 //doShowClosets
 function doShowClosets() {
 	var controller = Alloy.createController("ListCloset");
-	controller.navWindow.open();
+	if (controller.navWindow) {
+		controller.navWindow.open();
+	} else {
+		controller.getView().open();
+	}
 }
-
 
 $.mainWindow.addEventListener('androidback', function(e) {
 	$.mainWindow.close();
@@ -136,5 +140,4 @@ function doCreateEvent() {
 		alert(_error.message);
 	});
 }
-
 

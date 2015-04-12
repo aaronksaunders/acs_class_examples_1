@@ -1,7 +1,7 @@
 var args = arguments[0] || {};
 
 function closeWindow() {
-	$.navWindow.close();
+	$.getView().close();
 }
 
 /**
