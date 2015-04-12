@@ -5,23 +5,21 @@
 	<NavigationWindow platform="ios" id='navWindow'>
 		<Window class="container" >
 			<RightNavButton platform="ios">
-				<Button onClick="closeWindow">
-					Close
-				</Button>
+				<Button onClick="closeWindow">Close</Button>
 			</RightNavButton>
 			<!-- listen for click and call the function specified -->
 			<ListView id="listView" onItemclick="listItemClicked"
 			defaultItemTemplate="listViewTemplate">
 				<!-- the template defines how the list is displayed -->
 				<Templates>
-					<ItemTemplate name='listViewTemplate' height='60dp'>
+					<ItemTemplate name='listViewTemplate' height='90dp'>
 						<!-- add the UI elements for how you want the row to be drawn -->
 						<View id='templateWrapper'>
 							<!-- the two labels for the row -->
-							<Label bindId='name' id='name' class='listLabel'>
-							</Label>
-							<Label bindId='startTime' id='startTime'  class='listLabel'>
-							</Label>
+							<Label bindId='name' id='name' class='listLabel'></Label>
+							<Label bindId='location' id='location'  class='listLabel'></Label>
+							<Label bindId='mood' id='mood'  class='listLabel'></Label>
+							<Label bindId='items' id='items'  class='listLabel'></Label>
 						</View>
 					</ItemTemplate>
 				</Templates>
@@ -31,10 +29,11 @@
 				Use data-binding to populate this from the results collection
 				We name the function Alloy creates for data-binding so we can manually call it first time
 				-->
-				<ListSection  id='listSection' dataCollection="infoCollection" 
-					dataFunction="renderData"
-					dataTransform="transformData" >
-					<ListItem properties:model="{_data}" name:text="{name}" startTime:text="{startTime}" />
+				<ListSection  id='listSection' dataCollection="closetCollection"
+				dataFunction="renderData"
+				dataTransform="transformData" >
+					<ListItem properties:model="{_data}" name:text="{name}" location:text="{location}"
+						mood:text="{mood}" items:text="{items}"  />
 				</ListSection>
 			</ListView>
 		</Window>

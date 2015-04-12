@@ -6,7 +6,7 @@
     <property name="acs-oauth-secret-development" type="string">r6awfD4wMvUlmpYMRiasn2q01LBptHAw</property>
     <property name="acs-oauth-key-development" type="string">KAd9BD0PkZ28hkRm4OmK0qe5MVWhXs6W</property>
     <property name="acs-api-key-development" type="string">Sp2CyToFWD0djAYx9d8M3Kx7m4JzzQwV</property>
-    <id>ci.acs.adapter.starter</id>
+    <id>ci.acs.adapter.example1</id>
     <name>acs_alloy_adapter_test</name>
     <version>2.0</version>
     <publisher>aaronksaunders</publisher>

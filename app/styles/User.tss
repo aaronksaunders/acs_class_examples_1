@@ -33,9 +33,12 @@ TextField: {
 },
 // Default Button Style
 "Button": {
+	borderColor: 'grey',
+	borderWidth: '.5em',
 	top: '6dp',
 	width: '120dp',
 	height: '36dp',
+	color: 'black',
 	font:{
 		fontSize: '13dp'
 	}
@@ -61,7 +64,7 @@ ScrollView: {
 '#accountText':{
 	width : '80%',
 	textAlign : 'center',
-	text: "ACS Starter Application Template",
+	text: "ACS Sample Application",
 	font:{
 		fontSize: '24dp',
 		fontWeight: 'bold'
@@ -104,8 +107,8 @@ ScrollView: {
 	left: '0dp'
 },
 '#doCreateAccountBtn': {
-	left: '0dp'
+	left: '10dp'
 },
 '#doShowCreateAccountBtn': {
-	left: '0dp'
+	left: '20dp'
 }

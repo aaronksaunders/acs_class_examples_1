@@ -1,12 +1,13 @@
 <Alloy>
-	<Window id='mainWindow' class='container' exitOnClose='true' title='Sample App'>
+	<Window id='mainWindow' class='container' exitOnClose='true' title='ACS Sample App'>
 		<Label>
 			HELLO WORLD
 		</Label>
 		<Button id='logoutBtn' onClick="doLogout" top="50dp">
 			Logout
 		</Button>
-		<Button onClick="doShowEvents" top="150dp" title="Show Events"></Button>
 		<Button onClick="doCreateEvent" top="100dp" title="Create Event"></Button>
+		<Button onClick="doShowEvents" top="140dp" title="Show Events"></Button>
+		<Button onClick="doShowClosets" top="200dp" title="Show Closets"></Button>
 	</Window>
 </Alloy>

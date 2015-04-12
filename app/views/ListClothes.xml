@@ -1,0 +1,40 @@
+<Alloy>
+	<!-- on IOS we add the NavigationWindow to wrap UI,
+	this will place the tableView properly in the page -->
+
+	<Window class="container" id="clothesListWindow">
+		<RightNavButton platform="ios">
+			<Button onClick="closeWindow">Close</Button>
+		</RightNavButton>
+		<!-- listen for click and call the function specified -->
+		<ListView id="listView" onItemclick="listItemClicked"
+		defaultItemTemplate="listViewTemplate"
+		bottom='40dp'>
+			<!-- the template defines how the list is displayed -->
+			<Templates>
+				<ItemTemplate name='listViewTemplate' height='80dp'>
+					<!-- add the UI elements for how you want the row to be drawn -->
+					<View id='templateWrapper'>
+						<!-- the two labels for the row -->
+						<Label bindId='type' id='type' class='listLabel'></Label>
+						<Label bindId='tags' id='tags'  class='listLabel'></Label>
+					</View>
+				</ItemTemplate>
+			</Templates>
+			<!--
+			the list can have sections, we only need one in this app
+			the templates are added to sections to be displayed in list
+			Use data-binding to populate this from the results collection
+			We name the function Alloy creates for data-binding so we can manually call it first time
+			-->
+			<ListSection  id='listSection' dataCollection="clothesCollection"
+			dataFunction="renderData"
+			dataTransform="transformData" >
+				<ListItem properties:model="{_data}" type:text="{type}" tags:text="{tags}" />
+			</ListSection>
+		</ListView>
+		<View bottom='4dp' height='40dp' width='100%'>
+			<Button title="Add Item To Closet"  onClick="doAddItemToCloset"></Button>
+		</View>
+	</Window>
+</Alloy>

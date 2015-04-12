@@ -2,6 +2,8 @@
 // GLOBAL COLLECTION INSTANCE
 //
 infoCollection = Alloy.Collections.instance('event');
+closetCollection = Alloy.Collections.instance('closet');
+clothesCollection = Alloy.Collections.instance('clothing');
 
 
 // check if there is a user session saved already
@@ -37,7 +39,6 @@ function userLoggedIn(_user) {
 	// set button title with name to show we are logged in
 	$.logoutBtn.title = "Logout: " + _user.get("username");
 
-	doClosetLibraryTest();
 
 	// added support for getting location from the user
 	// object since it seems like a helpful feature
@@ -91,6 +92,13 @@ function doLogout() {
 //doShowEvents
 function doShowEvents() {
 	var controller = Alloy.createController("ListInformation");
+	controller.navWindow.open();
+}
+
+
+//doShowClosets
+function doShowClosets() {
+	var controller = Alloy.createController("ListCloset");
 	controller.navWindow.open();
 }
 
