@@ -10,7 +10,7 @@ _Concepts here are meant to be a introductory guide to concepts covered in my bo
 ===
 The purpose of this repo is to provide an application template as a starter to build native, cross-platform, cloud enabled application on the Appcelerator Platform.
 
-###This application demonstrates the following Features
+###This Application Demonstrates the Following Features
 * Creating Appcelerator Cloud Services Event Objects
 * Creating Appcelerator Cloud Services Custom Objects (Closet and Clothes)
 * Creating Appcelerator Cloud Services Custom Objects with Relationships ( Between Closet and Clothes )
@@ -29,3 +29,6 @@ The purpose of this repo is to provide an application template as a starter to b
 1. create a new test user for the application
 
 After following those steps, you should be able to login the user you added in the console or create a new user using the application interface
+
+###Additional Documentation
+* [https://github.com/aaronksaunders/Appcelerator-Cloud-Services-Sync-Adapter/blob/master/README.md](https://github.com/aaronksaunders/Appcelerator-Cloud-Services-Sync-Adapter/blob/master/README.md)
