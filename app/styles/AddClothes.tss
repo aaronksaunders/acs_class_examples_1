@@ -1,0 +1,45 @@
+
+".container": {
+	backgroundColor: "white",
+	title: "Add Clothes To Closet",
+	backButtonTitle: "",
+	layout: 'vertical'
+}
+'.inputView': {
+	top: '20dp',
+	width: '90%',
+	height: Titanium.UI.SIZE,
+	layout: 'vertical'
+}
+'.inputFieldWrapper':{
+	top: '5dp',
+	layout: 'horizontal',
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE
+}
+'.inputLbl':{
+	width: '25%',
+	height: Titanium.UI.SIZE,
+	font: {
+		fontWeight: 'bold'
+	}
+}
+'.inputTF':{
+	width: '75%',
+	height: Titanium.UI.SIZE,
+	font: {
+		fontWeight: 'normal',
+		color: 'gray'
+	}
+}
+
+"Button": {
+	borderColor: 'grey',
+	borderWidth: '.5em',
+	width: '60%',
+	color: 'white',
+	font: {
+		fontWeight: 'bold'
+	},
+	backgroundColor: '#04B404'
+}

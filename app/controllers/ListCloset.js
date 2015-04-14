@@ -3,6 +3,9 @@ var args = arguments[0] || {};
 // If IOS then add the window to the NavigationWindow
 if (OS_IOS) {
 	$.navWindow.open();
+
+	// used with IOS for TitleBar and Navigation UI
+	Alloy.Globals.navWindow = $.navWindow;
 }
 
 function closeWindow() {
@@ -46,11 +49,13 @@ function listItemClicked(_event) {
 	var model = _collection.models[_event.itemIndex];
 
 	var controller = Alloy.createController("ListClothes", {
-		clothesArray : model.get("[CUSTOM_clothing]clothing_ids")
+		clothesArray : model.get("[CUSTOM_clothing]clothing_ids"),
+		closet : model.attributes, // we need the closet
+		navWindow : Alloy.Globals.navWindow
 	});
 
 	if (OS_IOS) {
-		$.navWindow.openWindow(controller.clothesListWindow);
+		Alloy.Globals.navWindow.openWindow(controller.clothesListWindow);
 	} else {
 		controller.clothesListWindow.open();
 	}

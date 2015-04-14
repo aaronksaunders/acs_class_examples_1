@@ -1,0 +1,16 @@
+<Alloy>
+	<Window id='addClothesWindow' class='container'>
+		<Label top='10dp'>Enter Information On Clothes</Label>
+		<View class='inputView'>
+			<View class='inputFieldWrapper'>
+				<Label class='inputLbl'>Type:</Label>
+				<TextField  class='inputTF' id='typeTF'></TextField>
+			</View>
+			<View class='inputFieldWrapper'>
+				<Label class='inputLbl'>Tags:</Label>
+				<TextField class='inputTF' id='tagsTF'></TextField>
+			</View>
+		</View>
+		<Button id='saveBtn' top='20dp' onClick="doSaveClothes">SAVE CLOTHES</Button>
+	</Window>
+</Alloy>

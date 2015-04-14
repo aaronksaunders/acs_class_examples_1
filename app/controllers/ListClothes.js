@@ -46,7 +46,20 @@ function listItemClicked(_event) {
  */
 function doAddItemToCloset() {
 	alert("Add Item To Closet was CLicked");
+
+
+	// open new controller/window
+	var controller = Alloy.createController("AddClothes", {
+		closetAttributes : args.closet, // need information on closet
+	});
+
+	if (OS_IOS) {
+		Alloy.Globals.navWindow.openWindow(controller.addClothesWindow);
+	} else {
+		controller.addClothesWindow.open();
+	}
 }
+
 /**
  * Event Listener called when the window is closed
  */

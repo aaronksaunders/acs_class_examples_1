@@ -1,5 +1,7 @@
 ".container": {
-	backgroundColor: "white"
+	backgroundColor: "white",
+	title: "Clothes Listing",
+	backButtonTitle : ""
 }
 
 "Label": {
@@ -9,7 +11,7 @@
 }
 
 ".listLabel": {
-	left : '5dp',
+	left: '5dp',
 	font: {
 		fontSize: 12
 	}
@@ -25,7 +27,7 @@
 }
 
 "#listView[Android]": {
-	separatorColor : 'gray',
+	separatorColor: 'gray'
 }
 
 
@@ -33,5 +35,5 @@
 	borderColor: 'grey',
 	borderWidth: '.5em',
 	width: '60%',
-	color: 'black',
+	color: 'black'
 }

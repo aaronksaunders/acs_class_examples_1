@@ -3,6 +3,9 @@ var args = arguments[0] || {};
 // If IOS then add the window to the NavigationWindow
 if (OS_IOS) {
 	$.navWindow.add($.listInformationWindow);
+
+	// used with IOS for TitleBar and Navigation UI
+	Alloy.Globals.navWindow = $.navWindow;
 }
 
 function closeWindow() {

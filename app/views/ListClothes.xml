@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container" id="clothesListWindow" title='ACS Sample App'>
+	<Window class="container" id="clothesListWindow" >
 		<ActionBar displayHomeAsUp="true" platform="android"
 		onHomeIconItemSelected="closeWindow" />
 		<!-- listen for click and call the function specified -->

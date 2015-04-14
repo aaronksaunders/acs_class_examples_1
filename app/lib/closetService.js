@@ -22,7 +22,6 @@ function _addClothes(_closetId, _clothesInformation) {
 	var closet = new ClosetModel();
 
 	// 1) get the closet
-	debugger;
 	return closet.fetch({
 		id : _closetId,
 		data : {
@@ -32,32 +31,34 @@ function _addClothes(_closetId, _clothesInformation) {
 			})
 		}
 	}).then(function(_closetObject) {
+		// 2) create the clothing item
 		return clothing.save(_clothesInformation);
 	}).then(function(_newClothing) {
+		// 3) add clothing item to closet
+
+		// 3a) get the array of clothes
 		var clothesArray = closet.get('[CUSTOM_clothing]clothing_ids') || [];
 
+		// 3b) get JUST the array of clothes ids
 		if (clothesArray.length) {
 			clothesArray = clothesArray.map(function(_item) {
 				return _item.id;
 			});
 		}
+
+		// 3c) Add the id of the new piece of clothing
 		clothesArray.push(_newClothing.id);
 
-		// just set the fields we need to update
+		// 3d) just set the fields we need to update,the clothesArray
 		closet.clear().set({
 			'[CUSTOM_clothing]clothing_ids' : clothesArray,
 			id : _closetId
 		});
+				// 3e) save the closet with the updated clothes Array
 		return closet.save();
 	}, function(_error) {
 		console.log(_error);
 	});
-
-	// 2) create the clothing item
-
-	// 3) add clothing item to closet
-
-	// 4) save closet
 
 }
 

@@ -1,5 +1,7 @@
 ".container": {
-	backgroundColor: "white"
+	backgroundColor: "white",
+	title: "Closet Listing",
+	backButtonTitle: ""
 }
 
 "Label": {
@@ -9,7 +11,7 @@
 }
 
 ".listLabel": {
-	left : '5dp',
+	left: '5dp',
 	font: {
 		fontSize: 12
 	}
@@ -25,6 +27,6 @@
 }
 
 "#listView[Android]": {
-	separatorColor : 'gray',
+	separatorColor: 'gray'
 }
 
