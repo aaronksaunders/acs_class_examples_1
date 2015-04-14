@@ -1,0 +1,14 @@
+<Alloy>
+	<Window id='mainWindow' class='container' exitOnClose='true' title='ACS Sample App'>
+		<RightNavButton platform="ios">
+			<Button id="settingsBtn">Settings</Button>
+		</RightNavButton>
+		<Menu id="mainMenu"  platform="android" >
+			<MenuItem id="settingsItem" title="Settings" />
+		</Menu>
+		<Button id='logoutBtn' top="50dp">Logout</Button>
+		<Button id="createEvent" top="100dp" title="Create Event"></Button>
+		<Button id="showEvents" top="140dp" title="Show Events"></Button>
+		<Button id="showClosets" top="200dp" title="Show Closets"></Button>
+	</Window>
+</Alloy>

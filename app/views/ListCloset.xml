@@ -42,7 +42,7 @@
 	<!-- Android does not need NavigationWindow -->
 	<Window class="container" id='listClosetWindow'  platform="android">
 		<ActionBar displayHomeAsUp="true" platform="android"
-		onHomeIconItemSelected="closeWindow" />
+		onHomeIconItemSelected="closeWindow" title='ACS Sample App'/>
 		<!-- listen for click and call the function specified -->
 		<ListView id="listView" onItemclick="listItemClicked"
 		defaultItemTemplate="listViewTemplate">

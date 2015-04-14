@@ -1,8 +1,5 @@
 <Alloy>
-	<Window class="container" id="clothesListWindow">
-		<RightNavButton platform="ios">
-			<Button onClick="closeWindow">Close</Button>
-		</RightNavButton>
+	<Window class="container" id="clothesListWindow" title='ACS Sample App'>
 		<ActionBar displayHomeAsUp="true" platform="android"
 		onHomeIconItemSelected="closeWindow" />
 		<!-- listen for click and call the function specified -->

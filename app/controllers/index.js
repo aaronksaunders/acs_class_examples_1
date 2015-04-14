@@ -27,8 +27,10 @@ if (aUser.authenticated()) {
 function userLoggedIn(_user) {
 
 	if (!$.alreadyOpenedIndex) {
-		// start the application
-		$.mainWindow.open();
+		// start the application, if using IOS then open the 
+		// navWindow to start the app instead of the mainWindow
+		var mainWindow = $.navWindow || $._index.mainWindow;
+		mainWindow.open();
 
 		$.alreadyOpenedIndex = true;
 	}
@@ -36,7 +38,7 @@ function userLoggedIn(_user) {
 	Alloy.Globals.CURRENT_USER = _user;
 
 	// set button title with name to show we are logged in
-	$.logoutBtn.title = "Logout: " + _user.get("username");
+	$._index.logoutBtn.title = "Logout: " + _user.get("username");
 
 	// added support for getting location from the user
 	// object since it seems like a helpful feature
@@ -87,57 +89,22 @@ function doLogout() {
 	}
 }
 
-//doShowEvents
-function doShowEvents() {
-	var controller = Alloy.createController("ListInformation");
-	if (controller.navWindow) {
-		controller.navWindow.open();
-	} else {
-		controller.getView().open();
-	}
-}
+$._index.mainWindow.addEventListener('open', function() {
 
-//doShowClosets
-function doShowClosets() {
-	var controller = Alloy.createController("ListCloset");
-	if (controller.navWindow) {
-		controller.navWindow.open();
-	} else {
-		controller.getView().open();
-	}
-}
+	// Set the parent object on the required _index view,
+	// pass in the logout function, wait until the window
+	// is displayed
+	$._index.init({
+		parent : $,
+		doLogout : doLogout
+	});
 
-$.mainWindow.addEventListener('androidback', function(e) {
-	$.mainWindow.close();
-
-	// get activity and cleanup
-	$.mainWindow.activity.finish();
 });
 
-// ================================================================================
-//     EVENT TEST FUNCTIONS
-// ================================================================================
-function doCreateEvent() {
-	var anEvent = Alloy.createModel('Event');
-	anEvent.set({
-		name : 'Celebration',
-		start_time : new Date(),
-		duration : 3600,
-		recurring : 'monthly',
-		recurring_count : 5
-	});
+$._index.mainWindow.addEventListener('androidback', function(e) {
+	$._index.mainWindow.close();
 
-	anEvent.save().then(function(_model) {
-		console.log("anEvent.save " + JSON.stringify(_model, null, 2));
-
-		var moment = require('alloy/moment');
-		console.log("start time-relative: " + _model.getFromNowStartTime());
-		console.log("start time-formatted: " + _model.getFormattedStartTime());
-
-		return doFetchEvents();
-
-	}, function(_error) {
-		alert(_error.message);
-	});
-}
+	// get activity and cleanup
+	$._index.mainWindow.activity.finish();
+});
 
