@@ -1,26 +1,25 @@
-//
-// Service for working with the closet collection and clothes
-// model object. This separates the functionality into a 
-// reusable service
-//
-//
+var ClothingCollection = new AlloyObjectFactory('clothing', "Objects").Collection;
+var ClothingModel = new AlloyObjectFactory('clothing', "Objects").Model;
+
+var ClosetCollection = new AlloyObjectFactory('closet', "Objects").Collection;
+var ClosetModel = new AlloyObjectFactory('closet', "Objects").Model;
+
 /**
- * @param {Object} _params - fields for the closet object
- * @returns a {Promise}
+ *
  */
 function _createCloset(_params) {
-	var closet = Alloy.createModel('Closet');
+	var closet = new ClosetModel();
 	return closet.save(_params);
 }
 
 /**
  *
  * @param {Object} _closetId
- * @param {Object} _clothesInformation - fields for the clothing object
+ * @param {Object} _clothesInformation
  */
 function _addClothes(_closetId, _clothesInformation) {
-	var clothing = Alloy.createModel('Clothing');
-	var closet = Alloy.createModel('Closet');
+	var clothing = new ClothingModel();
+	var closet = new ClosetModel();
 
 	// 1) get the closet
 	return closet.fetch({
@@ -55,7 +54,7 @@ function _addClothes(_closetId, _clothesInformation) {
 			'[CUSTOM_clothing]clothing_ids' : clothesArray,
 			id : _closetId
 		});
-		// 3e) save the closet with the updated clothes Array
+				// 3e) save the closet with the updated clothes Array
 		return closet.save();
 	}, function(_error) {
 		console.log(_error);
@@ -64,13 +63,14 @@ function _addClothes(_closetId, _clothesInformation) {
 }
 
 /**
- * gets a specific clothing object based on the 
- * object id of the clothing
- * 
+ *
  * @param {Object} _id
  */
 function _getClothing(_id) {
-	var clothing = Alloy.createCollection('Clothing');
+	//551b0d8d54add893d5ccb6f9
+	//var clothing = Alloy.createCollection('clothing');
+
+	var clothing = new ClothingCollection();
 
 	return clothing.fetch({
 		id : _id,
@@ -80,11 +80,8 @@ function _getClothing(_id) {
 	});
 }
 
-/**
- * 
- */
 function _getAllClosets() {
-	var closetCollection = Alloy.createCollection('Closet');
+	var closetCollection = new ClosetCollection();
 	return closetCollection.fetch({
 		data : {
 			response_json_depth : 4
@@ -92,11 +89,8 @@ function _getAllClosets() {
 	});
 }
 
-/**
- * gets all of the clothing in all closets
- */
 function _getAllClothing() {
-	var clothing = Alloy.createCollection('Clothing');
+	var clothing = new ClothingCollection();
 	return clothing.fetch({
 		data : {
 			response_json_depth : 2
@@ -104,13 +98,9 @@ function _getAllClothing() {
 	});
 }
 
-/**
- * gets all of the clothing from a specific closet
- * 
- * @param {Object} _closetId
- */
 function _getAllClothingByClosetId(_closetId) {
 
+	//var clothing = new ClothingCollection();
 	var clothing = Alloy.createCollection('clothing');
 
 	var queryObject = {
@@ -126,6 +116,36 @@ function _getAllClothingByClosetId(_closetId) {
 
 function _queryCloset() {
 
+}
+
+function AlloyObjectFactory(_name, _Object) {
+	var model,
+	    definition = {
+		config : {
+			adapter : {
+				type : "acs"
+			},
+			settings : {
+				object_name : _name/*"book"*/,
+				object_method : _Object/*"Objects"*/
+			}
+		},
+		extendModel : function(Model) {
+			_.extend(Model.prototype, {});
+			return Model;
+		},
+		extendCollection : function(Collection) {
+			_.extend(Collection.prototype, {});
+			return Collection;
+		}
+	};
+
+	model = Alloy.M(_name, definition, []);
+
+	return {
+		Model : model,
+		Collection : Alloy.C(_name, definition, model)
+	};
 }
 
 module.exports = {
